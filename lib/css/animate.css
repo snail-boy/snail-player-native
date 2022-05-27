@@ -1,0 +1,16 @@
+
+.sn-player-progress {
+}
+
+
+
+@keyframes startAndPause {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}

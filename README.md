@@ -1,2 +1,0 @@
-# snail-player-native
-snailplayer
