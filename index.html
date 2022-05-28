@@ -5,7 +5,8 @@
   <title>Title</title>
   <style>
     #snailPlayId {
-        width: 900px;
+        width: 800px;
+        height: 500px;
         margin: 0 auto;
     }
     h1 {
@@ -16,12 +17,15 @@
 <body>
 <h1>snail-player</h1>
 <div id='snailPlayId'></div>
+
 </body>
 <script type="module">
   import SnailPlayer from "./lib/index.js";
   new SnailPlayer({
     el: '#snailPlayId',
-    src: 'https://webrabbit.oss-cn-beijing.aliyuncs.com/drawingbed/video.mp4'
+    src: 'https://webrabbit.oss-cn-beijing.aliyuncs.com/drawingbed/video.mp4',
+    autoplay: true, // 是否自动播放
+    loop: true // 是否循环播放
   })
 </script>
 </html>
