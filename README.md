@@ -26,7 +26,8 @@
 ```
 
 <h3>Usage</h3>
-### 直接运行index.html
+
+直接运行index.html
 
 
 ```html
@@ -76,4 +77,4 @@
 
 [gitee地址](https://gitee.com/snailwebboy/snail-player-native)
 
-##欢迎留言issues
+<h3 style="color: green">欢迎留言issues</h3>
