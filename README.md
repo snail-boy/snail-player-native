@@ -3,7 +3,7 @@
 <div align='center'>
 
 # snail-player-native
-一个h5视频播放器, 功能高度完善，基本满足使用。原生插件。仅供学习，禁止商用
+一个纯原生代码编写的h5视频播放器, 功能完善，基本满足使用，仅供学习，禁止商用
 
 
 
@@ -21,110 +21,50 @@
 
 ```js
 
-1,npm install snail-player --save
-
-2,import VueSmsCode from 'snail-player'
-
-3
-// html
-<div id='snailPlayWrapper'></div>
-
-
-// vue:
-this.$nextTick(() => {
-    new SnailPlayer({
-        el: '#snailPlayVideos',
-        src: require('@/assets/video2.mp4'),
-        autoplay: true,
-        loop: true
-    })
-})
-
-// js
-window.onload = function () {
-  new SnailPlayer({
-    el: '#snailPlayWrapper',
-    src: require('@/assets/video2.mp4'),
-    autoplay: true,
-    loop: true
-  })
-}
+1,git clone https://github.com/snail-boy/snail-player.git
 
 ```
-
-```vue
-
-<vue-sms-check-code
-    title='请输入验证码' 
-    :code-num='6'
-    :is-error='isError'
-    error-color='#D81A1A'
-    @finish='getSmsCode'
-/>
-```
-
-| 事件  |  说明  | 默认  |  类型
-|:----: |:----: |:----: | :----: 
-| title    | 组件标题   | 请输入验证码 | string
-| code-num | 验证码个数 | 6   | number
-| is-error | 验证码是否错误 | false | boolean
-| error-color | 验证码错误时显示的错误颜色 | #D81A1A | string
-
-
-| 方法          | 说明   | 默认   |  类型
-|:----: |:----: |:----: | :----: 
-| finish       | 验证码值 | '' | string
-
-
 
 <h3>Usage</h3>
+### 直接运行index.html
 
-```vue
-<template>
-  <div id="app">
-    <vue-sms-check-code
-        title='请输入验证码'
-        :codeNum='6'
-        :is-error='isError'
-        error-color='#D81A1A'
-        @finish='getSmsCode'
-    />
-    {{msg}}
-  </div>
-</template>
 
-<script>
-export default {
-  name: 'App',
-  data() {
-    return {
-      isError: false, // 验证码错误
-      msg: ''
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #snailPlayId {
+      width: 800px;
+      height: 500px;
+      margin: 0 auto;
     }
-  },
-  methods: {
-    getSmsCode(val) {
-      this.isError = false
-      this.msg = val
-      setTimeout(() => {
-        this.isError = val !== '888888';
-        if(val === '888888') {
-          this.msg = '验证码输入成功'
-        }
-      }, 1000)
+    h1 {
+      text-align: center;
     }
-  }
-}
+  </style>
+</head>
+<body>
+<h1>snail-player</h1>
+<div id='snailPlayId'></div>
+
+</body>
+<script type="module">
+  import SnailPlayer from "./lib/index.js";
+  new SnailPlayer({
+    el: '#snailPlayId',
+    src: 'https://webrabbit.oss-cn-beijing.aliyuncs.com/drawingbed/video.mp4',
+    autoplay: true, // 是否自动播放
+    loop: true // 是否循环播放
+  })
 </script>
-
-<style>
-html, body {
-  padding: 0;
-  margin: 0;
-}
-</style>
+</html>
 
 ```
+
+
 
 </div>
 
@@ -132,6 +72,8 @@ html, body {
 
 <h3>源码地址，欢迎star</h3>
 
-[github地址](https://github.com/snail-boy/vue-sms-check-code)
+[github地址](https://github.com/snail-boy/snail-player-native)
 
-[gitee地址](https://gitee.com/snailwebboy/vue-sms-check-code)
+[gitee地址](https://gitee.com/snailwebboy/snail-player-native)
+
+##欢迎留言issues
