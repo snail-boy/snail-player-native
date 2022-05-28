@@ -13,6 +13,7 @@
 
 [演示](https://user-images.githubusercontent.com/34472552/170834852-9630c348-7aef-49d9-8b4e-20c6f55a068b.mp4)
 
+[演示加速](https://webrabbit.oss-cn-beijing.aliyuncs.com/drawingbed/snailplayer%E5%8E%9F%E8%A7%86%E9%A2%91.mp4)
 
 <div align='left'>
 
