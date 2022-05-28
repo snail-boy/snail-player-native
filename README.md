@@ -21,7 +21,7 @@
 
 ```js
 
-1,git clone https://github.com/snail-boy/snail-player.git
+1,git clone https://github.com/snail-boy/snail-player-native.git
 
 ```
 
