@@ -11,7 +11,7 @@
 [//]: # ([![npm]&#40;https://img.shields.io/badge/npm-vue2.6.11-blue&#41;]&#40;https://www.npmjs.com/package/vue-sms-check-code&#41;)
 
 
-[演示](https://user-images.githubusercontent.com/34472552/170833901-69d065be-76fe-4a12-8338-80bb790d0e71.mp4)
+[演示](https://user-images.githubusercontent.com/34472552/170834852-9630c348-7aef-49d9-8b4e-20c6f55a068b.mp4)
 
 
 <div align='left'>
