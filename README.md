@@ -1,6 +1,6 @@
 <div align='center'>
 <h1>snail-player-native</h1>
-<h4>一个纯原生代码编写的h5视频播放器, 功能完善，基本满足使用，仅供学习，禁止商用</h2>
+<h4>一个纯原生代码编写的h5视频播放器, 功能完善，基本满足使用，仅供学习，禁止商用</h4>
 
 
 ![issure](https://img.shields.io/github/issues/snail-boy/snail-player-native)
