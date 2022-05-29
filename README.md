@@ -1,9 +1,3 @@
----
-theme: awesome-green
-highlight: atelier-seaside-light
----
-
-
 <div align='center'>
 <h1>snail-player-native</h1>
 <h4>一个纯原生代码编写的h5视频播放器, 功能完善，基本满足使用，仅供学习，禁止商用</h2>
@@ -12,11 +6,14 @@ highlight: atelier-seaside-light
 ![issure](https://img.shields.io/github/issues/snail-boy/snail-player-native)
 ![forks](https://img.shields.io/github/forks/snail-boy/snail-player-native)
 ![stars](https://img.shields.io/github/stars/snail-boy/snail-player-native)
-[![license](https://img.shields.io/github/license/snail-boy/snail-player-native)](LICENSE)
+[![license](https://img.shields.io/github/license/snail-boy/snail-player-native)](https://github.com/snail-boy/snail-player-native/blob/master/LICENSE)
+
+
+
 
 [演示](https://user-images.githubusercontent.com/34472552/170834852-9630c348-7aef-49d9-8b4e-20c6f55a068b.mp4)
 
-[演示加速](https://webrabbit.oss-cn-beijing.aliyuncs.com/drawingbed/snailplayer%E5%8E%9F%E8%A7%86%E9%A2%91.mp4)
+[演示加速](https://webrabbit.oss-cn-beijing.aliyuncs.com/drawingbed/snailplayer%E6%BC%94%E7%A4%BA.mp4)
 
 <div align='left'>
 
