@@ -1,15 +1,18 @@
+---
+theme: awesome-green
+highlight: atelier-seaside-light
+---
 
 
 <div align='center'>
-
-# snail-player-native
+<h1>snail-player-native</h1>
 <h4>一个纯原生代码编写的h5视频播放器, 功能完善，基本满足使用，仅供学习，禁止商用</h2>
 
 
-
-[//]: # ([![license]&#40;https://img.shields.io/badge/license-MIT-yellowgreen&#41;]&#40;LICENSE&#41;)
-[//]: # ([![npm]&#40;https://img.shields.io/badge/npm-vue2.6.11-blue&#41;]&#40;https://www.npmjs.com/package/vue-sms-check-code&#41;)
-
+![issure](https://img.shields.io/github/issues/snail-boy/snail-player-native)
+![forks](https://img.shields.io/github/forks/snail-boy/snail-player-native)
+![stars](https://img.shields.io/github/stars/snail-boy/snail-player-native)
+[![license](https://img.shields.io/github/license/snail-boy/snail-player-native)](LICENSE)
 
 [演示](https://user-images.githubusercontent.com/34472552/170834852-9630c348-7aef-49d9-8b4e-20c6f55a068b.mp4)
 
@@ -18,16 +21,17 @@
 <div align='left'>
 
 
-<h3>Install</h3>
+## Install
 
 ```js
 
-1,git clone https://github.com/snail-boy/snail-player-native.git
+1. git clone https://github.com/snail-boy/snail-player-native.git
+2. 拷贝lib目录下的文件到自己项目里
+
 
 ```
 
-<h3>Usage</h3>
-
+## Usage
 直接运行index.html
 
 
@@ -66,7 +70,173 @@
 
 ```
 
-<h3>Function</h3>
+## Some Code
+<h3>main.js</h3>
+
+```js
+// 计算进度条时间
+progressTime(offsetY) {
+  return utils.formatSeconds((offsetY / this.progressw * this.playVideo.duration).toFixed(2))
+}
+
+
+// 进度条计算公式
+progressCalculate() {
+  return (this.progressw / this.playVideo.duration * this.playVideo.currentTime).toFixed(2)
+}
+
+
+// 全屏
+fullScreenFun() {
+  const docElm = document.documentElement
+  if (!this.isFullScreen) {
+    utils.addClass(this.el, 'fullscreen-active')
+    utils.addClass(this.playVideo, 'fullscreen-active')
+    utils.showClass('snail-player-full-screen-icon')
+    utils.hiddenClass('snail-player-fullscreen-btn')
+    utils.changeInnerText('fullscreen-icon', '退出全屏')
+    utils.addClass(this.playBottom, 'sn-player-fullscreen-bottom-active')
+    setTimeout(() => {
+      if (docElm.requestFullscreen) {
+        docElm.requestFullscreen();
+      } else if (docElm.mozRequestFullScreen) {
+        docElm.mozRequestFullScreen();
+      } else if (document.webkitRequestFullScreen) {
+        docElm.webkitRequestFullScreen();
+      }
+    }, 100)
+    this.isFullScreen = true
+    utils.hiddenClass('snail-player-web-fullscreen-box')
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+    }
+    utils.showClass('snail-player-web-fullscreen-box')
+    utils.removeClass(this.el, 'fullscreen-active')
+    utils.removeClass(this.playVideo, 'fullscreen-active')
+    utils.hiddenClass('snail-player-full-screen-icon')
+    utils.showClass('snail-player-fullscreen-btn')
+    utils.changeInnerText('fullscreen-icon', '进入全屏')
+    utils.removeClass(this.playBottom, 'sn-player-fullscreen-bottom-active')
+    this.isFullScreen = false
+  }
+}
+
+
+
+```
+
+
+<h3>index.js</h3>
+
+```
+//加载css
+renderCss(url) {
+  var head = document.getElementsByTagName('head')[0];
+  var link = document.createElement('link');
+  link.type='text/css';
+  link.rel = 'stylesheet';
+  link.href = url;
+  head.appendChild(link);
+}
+
+//加载favicon
+renderIcon(url) {
+  var head = document.getElementsByTagName('head')[0];
+  var link = document.createElement('link');
+  link.type='type="image/x-icon"';
+  link.rel = 'shortcut icon';
+  link.href = url;
+  head.appendChild(link);
+}
+```
+
+<h3>Utils</h3>
+
+```js
+
+class Utils {
+  hasClass(ele, cls) {
+    return !!ele.className.match(new RegExp('(\s|^)' + cls + '(\s|$)'))
+  }
+  addClass(ele, cls) {
+    if (!this.hasClass(ele, cls)) ele.className += ' ' + cls
+  }
+  removeClass(ele, cls) {
+    if (this.hasClass(ele, cls)) {
+      const reg = new RegExp('(\s|^)' + cls + '(\s|$)')
+      ele.className = ele.className.replace(reg, '')
+    }
+  }
+  set(key, value) {
+    localStorage.setItem(key, value)
+  }
+
+  get(key) {
+    return  localStorage.getItem(key)
+  }
+  showClass(cls) {
+    cls ? document.getElementsByClassName(cls)[0].style.display = 'block' : new Error('请输入类名')
+  }
+  hiddenClass(cls) {
+    cls ? document.getElementsByClassName(cls)[0].style.display = 'none' : new Error('请输入类名')
+  }
+  changeInnerText(cls, text) {
+    document.getElementsByClassName(cls)[0].innerHTML = text
+  }
+
+  clickfu(to, cls){
+    //回调函数，to为点击对象
+    to.setAttribute("class",cls);
+    const siblings = to.parentNode.childNodes;
+    for(let i=0; i<siblings.length; i++)
+      if(siblings[i].nodeType == 1 && siblings[i] != to)siblings[i].className = '';
+  }
+
+  formatSeconds(value) {
+    if(!value) return '00:00'
+    value = parseInt(value);
+    let time;
+    if (value > -1) {
+     let hour = Math.floor(value / 3600);
+     let min = Math.floor(value / 60) % 60;
+     let sec = value % 60;
+     let day = parseInt(hour / 24);
+      if (day > 0) {
+        hour = hour - 24 * day;
+        time = day + "day " + hour + ":";
+      } else if (hour > 0) {
+        time = hour + ":";
+      }else {
+        time = "";
+      }
+      if (min < 10) {
+        time += "0";
+      }
+      time += min + ":";
+      if (sec < 10) {
+        time += "0";
+      }
+      time += sec;
+    }
+    return time;
+  }
+
+  classEle(cls) {
+    return  cls && document.getElementsByClassName(cls)[0]
+  }
+
+}
+
+export default Utils
+```
+
+
+## Function
 
 - 按空格键暂停播放
 - 点击屏幕暂停播放
@@ -80,14 +250,25 @@
 - 等
 
 
-</div>
+## 运行环境
+```
+支持es6的各种浏览器
+最好用chrome
+```
+
 
 </div>
 
-<h3>源码地址，欢迎star</h3>
+</div>
+
+## 源码地址，欢迎star
 
 [github地址](https://github.com/snail-boy/snail-player-native)
 
 [gitee地址](https://gitee.com/snailwebboy/snail-player-native)
 
-<h3 style="color: green">欢迎留言issues</h3>
+## 欢迎留言issues
+
+[Issues](https://github.com/snail-boy/snail-player-native/issues)
+
+
